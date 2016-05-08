@@ -1,7 +1,7 @@
 #protospace DB
 
 >about protospace:  
-You can post prototypes, like them, and ocmment on them.
+You can post prototypes, like them, and comment on them.
 
 ##Table  
   
