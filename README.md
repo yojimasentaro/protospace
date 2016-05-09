@@ -6,11 +6,11 @@ You can post prototypes, like them, and comment on them.
 ##Table  
   
 
-    users       ：   user info  
-    prototypes  ：   prototype info  
-    images      ：   image info  
-    likes       ：   like towards prototype  
-    commnents   ：   comment on prototype  
+    users                 ：   user info  
+    prototypes            ：   prototype info  
+    prototype_images      ：   image info  
+    likes                 ：   like towards prototype  
+    commnents             ：   comment on prototype  
 
 ##Associations  
 
@@ -22,11 +22,11 @@ has_many    :likes
   
 Prototype:  
 belongs_to  :user
-has_many    :images  
+has_many    :prototype_images  
 has_many    :likes  
 has_many    :comments  
   
-Image:  
+Prototype_image:  
 belongs_to  :prototype
 
 Comment:  
@@ -50,7 +50,7 @@ belongs_to  :prototype
 |-------|------|-----------|-------|-----------|
 |integer|string|string     |text   |references |
 
-###images  
+###prototype_images  
 |id     |image |prototype\_id|
 |-------|------|-------------|
 |integer|string|references   |
