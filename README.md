@@ -46,24 +46,24 @@ belongs_to  :prototype
 |integer|string  |string|string  |string|text   |string|string|
 
 ###prototypes  
-|id     |title |catch\_copy|concept|user\_id|
-|-------|------|-----------|-------|--------|
-|integer|string|string     |text   |integer |
+|id     |title |catch\_copy|concept|user\_id   |
+|-------|------|-----------|-------|-----------|
+|integer|string|string     |text   |references |
 
 ###images  
 |id     |image |prototype\_id|
 |-------|------|-------------|
-|integer|string|integer      |
+|integer|string|references   |
 
 ###likes  
-|id     |user\_id|prototype\_id|
-|-------|--------|-------------|
-|integer|integer |integer      |
+|id     |user\_id  |prototype\_id|
+|-------|----------|-------------|
+|integer|references|references   |
 
 ###comments  
-|id     |user\_id|prototype\_id|comment|
-|-------|--------|-------------|-------|
-|integer|integer |integer      |text   |
+|id     |user\_id  |prototype\_id|comment|
+|-------|----------|-------------|-------|
+|integer|references|references   |text   |
 
 
 
