@@ -51,9 +51,9 @@ belongs_to  :prototype
 |integer|string|string     |text   |references |
 
 ###prototype_images  
-|id     |image |prototype\_id|
-|-------|------|-------------|
-|integer|string|references   |
+|id     |content |prototype\_id|
+|-------|--------|-------------|
+|integer|string  |references   |
 
 ###likes  
 |id     |user\_id  |prototype\_id|
@@ -61,7 +61,7 @@ belongs_to  :prototype
 |integer|references|references   |
 
 ###comments  
-|id     |user\_id  |prototype\_id|comment|
+|id     |user\_id  |prototype\_id|content|
 |-------|----------|-------------|-------|
 |integer|references|references   |text   |
 
