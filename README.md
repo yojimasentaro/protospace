@@ -41,9 +41,9 @@ belongs_to  :prototype
 
 ##Columns  
 ###users  
-|id     |username|email |password|avatar|profile|member|works |
-|-------|--------|----- |--------|------|-------|------|------|
-|integer|string  |string|string  |string|text   |string|string|
+|id     |username|email |password|avatar|profile|member|works|
+|-------|--------|----- |--------|------|-------|------|-----|
+|integer|string  |string|string  |string|text   |string|text |
 
 ###prototypes  
 |id     |title |catch\_copy|concept|user\_id   |
