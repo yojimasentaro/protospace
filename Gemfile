@@ -24,6 +24,7 @@ group :development do
   gem 'spring'
   gem 'pry-rails'
 end
+
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'devise'
