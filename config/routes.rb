@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources  :prototypes do
-  end
+  root 'prototypes#index'
+  resources  :prototypes
 end
