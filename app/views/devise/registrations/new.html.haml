@@ -8,7 +8,7 @@
             .user-name.col-md-10
               = f.text_field :username, placeholder: "Username"
             .user-image.col-md-2
-              %button.btn.btn-primary Add image
+              = f.button "Add Image", class: "btn btn-primary"
               = f.file_field :avatar
           .user-email
             = f.email_field :email, placeholder: "E-Mail"
