@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
             :recoverable, :rememberable, :trackable, :validatable
   has_many  :prototypes
   validates :username,      presence: true
-  validates :password,   length: { minimum: 8}
+  validates :password,   length: { minimum: 8 }
   validates :email,      presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 end
