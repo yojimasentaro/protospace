@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       :username,
       :avatar,
       :email,
+      :password,
       :profile,
       :member,
       :profile,
