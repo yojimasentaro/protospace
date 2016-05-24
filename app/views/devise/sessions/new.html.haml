@@ -2,6 +2,7 @@
   .form-signin
     %h2.form-signin-heading Please sign in
     = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin" }) do |f|
+      = devise_error_messages!
       = f.label :email
       = f.email_field :email, placeholder: "Email adress", autofocus: true, required: true, class: "form-control"
       = f.label :password
