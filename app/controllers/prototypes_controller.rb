@@ -5,7 +5,7 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    @prototype  = Prototype.new(create_params)
+    @prototype  = current_user.prototypes.new(create_params)
 
     if @prototype.save
       redirect_to root_path, notice: 'Posted Successfully!'
