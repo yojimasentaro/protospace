@@ -1,5 +1,5 @@
 .container.proto-new
-  = form_for [current_user, @prototype] do |f|
+  = form_for @prototype do |f|
     .col-md-8.col-md-offset-2
       %header.row.user-nav.row
         .col-md-12
@@ -12,16 +12,12 @@
               = prototype_image.hidden_field :role, value: :main
         .col-md-12
           %ul.proto-sub-list.list-group
-            %li.list-group-item.col-md-4
-              .image-upload
-                = f.fields_for :prototype_images do |prototype_image|
-                  = prototype_image.file_field :content
-                  = prototype_image.hidden_field :role, value: :sub
-            %li.list-group-item.col-md-4
-              .image-upload
-                = f.fields_for :prototype_images do |prototype_image|
-                  = prototype_image.file_field :content
-                  = prototype_image.hidden_field :role, value: :sub
+            - 2.times do
+              %li.list-group-item.col-md-4
+                .image-upload
+                  = f.fields_for :prototype_images do |prototype_image|
+                    = prototype_image.file_field :content
+                    = prototype_image.hidden_field :role, value: :sub
             %li.list-group-item.col-md-4
               .image-upload-plus
                 %span +
