@@ -3,10 +3,17 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.new
     @prototype.prototype_images.build
   end
+
   def create
-    Prototype.create(create_params)
-      redirect_to root_path, notice: 'succeed in post'
+    @prototype  = current_user.prototype.new(prototype_params)
+
+    if @prototype.save
+      redirect_to root_path, notice: 'Posted Successfully!'
+    else
+      render :new, alert: 'Sorry, but something went wrong'
+    end
   end
+
   private
   def create_params
     params.require(:prototype).permit(
