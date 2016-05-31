@@ -23,6 +23,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry-rails'
+  gem 'bullet'
 end
 
 gem 'haml-rails'
