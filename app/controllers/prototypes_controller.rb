@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
 
   def index
-    @prototypes = Prototype.order("created_at DESC").eager_load(:user, :prototype_images)
+    @prototypes = Prototype.order("prototypes.created_at DESC").eager_load(:user, :prototype_images)
   end
 
   def new
