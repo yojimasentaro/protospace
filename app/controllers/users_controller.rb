@@ -23,7 +23,6 @@ class UsersController < ApplicationController
       :password,
       :profile,
       :member,
-      :profile,
       :works
       )
   end
