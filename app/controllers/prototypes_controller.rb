@@ -1,5 +1,7 @@
 class PrototypesController < ApplicationController
 
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
+
   def index
     @prototypes = Prototype.order("prototypes.created_at DESC").eager_load(:user, :prototype_images)
   end
@@ -15,15 +17,38 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to root_path, notice: 'Posted Successfully!'
     else
-      render :new, alert: 'Sorry, but something went wrong'
+      render :new, alert: 'Sorry, but something went wrong.'
     end
   end
 
   def show
-    @prototype = Prototype.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+      if @prototype.user_id == current_user.id
+        if @prototype.update(create_params)
+          redirect_to root_path, notice: 'Updated Successfully!'
+        else
+          render :edit, alert: 'Sorry, but something went wrong.'
+        end
+      end
+    end
+
+  def destroy
+    @prototype.destroy
+    redirect_to root_path, notice: 'Deleted Successfully!'
   end
 
   private
+
+  def set_prototype
+    @prototype    = Prototype.find(params[:id])
+    @main_content = @prototype.prototype_images.main
+    @sub_contents = @prototype.prototype_images.sub
+  end
 
   def create_params
     params.require(:prototype).permit(
@@ -32,4 +57,5 @@ class PrototypesController < ApplicationController
       :concept,
       prototype_images_attributes: [:id, :content, :role])
   end
+
 end
