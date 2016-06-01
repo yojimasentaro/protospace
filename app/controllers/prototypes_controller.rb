@@ -1,4 +1,9 @@
 class PrototypesController < ApplicationController
+
+  def index
+    @prototypes = Prototype.order("prototypes.created_at DESC").eager_load(:user, :prototype_images)
+  end
+
   def new
     @prototype = Prototype.new
     @prototype.prototype_images.build
@@ -14,7 +19,12 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def show
+    @prototype = Prototype.find(params[:id])
+  end
+
   private
+
   def create_params
     params.require(:prototype).permit(
       :title,
