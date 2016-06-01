@@ -3,7 +3,7 @@
 class PrototypeImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -20,7 +20,6 @@ class PrototypeImageUploader < CarrierWave::Uploader::Base
   def default_url
     # For Rails 3.1+ asset pipeline compatibility:
     # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-
     '/uploads/noimage.png'
   end
 
@@ -32,9 +31,9 @@ class PrototypeImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :resize_to_fit => [750, 500]
-  # end
+  version :thumb do
+    process :resize_to_fit => [750, 500]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -42,7 +41,7 @@ class PrototypeImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  # process convert: 'jpg'
+  process convert: 'jpg'
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
