@@ -7,8 +7,9 @@ class PrototypesController < ApplicationController
   end
 
   def new
-    @prototype = Prototype.new
-    @prototype.prototype_images.build
+    @prototype    = Prototype.new
+    @main_content = @prototype.prototype_images.build
+    @sub_contents = 1.times { @prototype.prototype_images.build }
   end
 
   def create
@@ -25,17 +26,17 @@ class PrototypesController < ApplicationController
   end
 
   def edit
+    @main_content = @prototype.prototype_images.main
+    @sub_contents = @prototype.set_sub_contents
   end
 
   def update
-      if @prototype.user_id == current_user.id
-        if @prototype.update(create_params)
-          redirect_to root_path, notice: 'Updated Successfully!'
-        else
-          render :edit, alert: 'Sorry, but something went wrong.'
-        end
+      if @prototype.user_id == current_user.id && @prototype.update(create_params)
+        redirect_to root_path, notice: 'Updated Successfully!'
+      else
+        render :edit, alert: 'Sorry, but something went wrong.'
       end
-    end
+  end
 
   def destroy
     @prototype.destroy
@@ -46,8 +47,6 @@ class PrototypesController < ApplicationController
 
   def set_prototype
     @prototype    = Prototype.find(params[:id])
-    @main_content = @prototype.prototype_images.main
-    @sub_contents = @prototype.prototype_images.sub
   end
 
   def create_params
