@@ -12,15 +12,11 @@ class ApplicationController < ActionController::Base
         :member,
         :profile,
         :works,
-        :avatar,
-        :email,
-        :password
+        :avatar
         )
       devise_parameter_sanitizer.for(:account_update).push(
         :username,
-        :email,
         :avatar,
-        :password,
         :member,
         :profile,
         :works
