@@ -2,15 +2,23 @@
   .thumbnail
     = link_to prototype_path(prototype) do
       = image_tag prototype.prototype_images.main.first.content
-      .caption
-        %h3= prototype.title
-        .proto-meta
-          .proto-user
-            = link_to "by #{ prototype.user.username }", user_path(prototype.user)
-          .proto-posted
-            = prototype.created_at.strftime("%b %d")
-        %ul.proto-tag-list.list-inline
+    - if user_signed_in? && current_user.id == prototype.user_id
+      .dropdown.drop_menu_location
+        %button.btn.btn-default.dropdown-toggle{ id: "dropdownMenu", type: "button",  data: { toggle: "dropdown" } } Action
+        %ul.dropdown-menu{ aria: { labelledby: "dropdownMenu1" } }
           %li
-            %a{ href: "#", class: "btn btn-default" } iPad
+            = link_to "Delete", prototype, method: :delete
           %li
-            %a{ href: "#", class: "btn btn-default" } wireframe
+            = link_to "Edit"  , edit_prototype_path(prototype)
+    .caption
+      %h3= prototype.title
+      .proto-meta
+        .proto-user
+          = link_to "by #{ prototype.user.username }", user_path(prototype.user)
+        .proto-posted
+          = prototype.created_at.strftime("%b %d")
+      %ul.proto-tag-list.list-inline
+        %li
+          %a{ href: "#", class: "btn btn-default" } iPad
+        %li
+          %a{ href: "#", class: "btn btn-default" } wireframe
