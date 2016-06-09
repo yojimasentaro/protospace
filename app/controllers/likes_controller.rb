@@ -4,13 +4,13 @@ class LikesController < ApplicationController
 
   def create
     @like  = Like.create(user_id: current_user.id, prototype_id: params[:prototype_id])
-    set_js
+    render_js
   end
 
   def destroy
     @like = current_user.likes.find_by(prototype_id: params[:prototype_id])
     @like.destroy
-    set_js
+    render_js
   end
 
   private
@@ -23,7 +23,7 @@ class LikesController < ApplicationController
     @likes = Like.where(prototype_id: params[:prototype_id])
   end
 
-  def set_js
+  def render_js
    render partial: "likes/js_like"
   end
 
