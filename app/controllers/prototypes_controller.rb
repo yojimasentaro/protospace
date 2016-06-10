@@ -23,7 +23,9 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    @likes = Like.where(prototype_id: params[:id])
+    @likes    = Like.where(prototype_id: params[:id])
+    @comments = @prototype.comments.includes(:user).all
+    @comment  = @prototype.comments.build(user_id: current_user.id) if current_user
   end
 
   def edit
