@@ -6,15 +6,15 @@
   .container
     .row
       %ul.nav.nav-pills.col-lg-11
-        %li.active{ role: "presentation" }
-          %a{ href: "#" } Popular PROTO
-        %li{ role: "presentation" }
-          %a{ href: "#" } Newest PROTO
+        %li{ class: "#{ "active" if @status == 'popular' }" }
+          = link_to "Popular PROTO", popular_index_path
+        %li{ class: "#{ "active" if @status == 'newest' }" }
+          = link_to "Newest PROTO", root_path
       = button_tag 'View Tags', type: "button", class: "btn btn-default col-lg-1"
 
 .container.proto-list
   .row
-    = render partial: "prototype", collection: @prototypes
+    = render partial: "prototypes/prototype", collection: @prototypes
 
 .text-center
   %ul.pagination
