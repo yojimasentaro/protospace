@@ -58,7 +58,8 @@ class PrototypesController < ApplicationController
       :title,
       :catch_copy,
       :concept,
-      prototype_images_attributes: [:id, :content, :role])
+      prototype_images_attributes: [:id, :content, :role]
+      ).merge(tag_list: params[:prototype][:tag])
   end
 
 end
