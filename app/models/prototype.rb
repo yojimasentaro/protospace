@@ -8,6 +8,8 @@ class Prototype < ActiveRecord::Base
   accepts_nested_attributes_for :prototype_images, allow_destroy: true, reject_if: :all_blank
   validates  :catch_copy, :concept, :title,  presence: true
 
+  paginates_per 8
+
   SUB_CONTENT_MAX = 2
   def set_sub_contents
     sub_contents = prototype_images.sub
